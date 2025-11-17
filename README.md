@@ -1,2 +1,4 @@
-# che120-snake-game
-CHE 120 Group Project - Modified Snake Game
+"# CHE 120 Snake Game Project" 
+"## Group Members" 
+"## Group Members" 
+"- [AL's Name] (AL) - [AL's Student ID]" 
