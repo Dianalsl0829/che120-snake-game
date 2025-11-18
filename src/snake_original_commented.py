@@ -2,7 +2,7 @@
 
 Group members:
  - Shulin Lu (SL) - 21188336
- - Amy Liu (AL) - StudentID
+ - Amy Liu (AL) - 21190251
 
 Exercises
 1. How do you make the snake faster or slower?
