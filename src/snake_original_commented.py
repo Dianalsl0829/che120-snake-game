@@ -39,41 +39,49 @@ def inside(head):
 # SL - main game loop to move the snake
 def move():
     """Move snake forward one segment."""
-    head = snake[-1].copy() # SL : Copy the current head position
+    head = snake[-1].copy() # SL - Copy the current head position
     head.move(aim) # SL: move head in current direction
 
-    # SL : Check for game over conditions (hit wall or self)
+    # SL - Check for game over conditions (hit wall or self)
     if not inside(head) or head in snake:
-        square(head.x, head.y, 9, 'red')
+        square(head.x, head.y, 9, 'red')# SL - draw red square at head position to indicate game over
         update()
-        return
+        return # SL - End game
 
-    snake.append(head)
-
-    if head == food:
-        print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
+    snake.append(head) # SL - Andd new head position to snake body
+    #AL : food consumption and growth
+    if head == food: # AL : Check if snake's head is at food position
+        print('Snake:', len(snake)) # AL : Print current length of the snake
+        food.x = randrange(-15, 15) * 10 # AL : Reposition food randomly within boundaries
+        food.y = randrange(-15, 15) * 10 
     else:
-        snake.pop(0)
+        snake.pop(0) # AL : Remove tail segment if no food eaten
 
-    clear()
+    # AL : clears screen and redraws snake and food
+    clear() # AL : Clear the screen for redrawing
 
+    # AL : Draw each segment of the snake
     for body in snake:
         square(body.x, body.y, 9, 'black')
 
-    square(food.x, food.y, 9, 'green')
-    update()
+    # AL : Draw the food
+    square(food.x, food.y, 9, 'green') # AL : Draw food as green square
+    update() # AL : Update the screen with new drawings
     ontimer(move, 100)
 
 
-setup(420, 420, 370, 0)
-hideturtle()
-tracer(False)
-listen()
-onkey(lambda: change(10, 0), 'Right')
-onkey(lambda: change(-10, 0), 'Left')
-onkey(lambda: change(0, 10), 'Up')
-onkey(lambda: change(0, -10), 'Down')
-move()
-done()
+# AL: Game initialization and control setup
+setup(420, 420, 370, 0) # AL : Set up the game window size and position
+hideturtle() # AL : Hide the turtle cursor
+tracer(False) # AL : Turn off automatic screen updates
+listen() # AL : Set up to listen for keyboard input
+
+# AL : Bind arrow keys to change snake direction
+onkey(lambda: change(10, 0), 'Right') # AL : Right arrow key
+onkey(lambda: change(-10, 0), 'Left') # AL : Left arrow key
+onkey(lambda: change(0, 10), 'Up') # AL : Up arrow key
+onkey(lambda: change(0, -10), 'Down') # AL : Down arrow key
+
+# AL : Start the game loop
+move() # AL : Call move function to start the game
+done() # Al: keep the window open until closed by the user
