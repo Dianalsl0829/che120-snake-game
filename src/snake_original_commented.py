@@ -39,9 +39,10 @@ def inside(head):
 # SL - main game loop to move the snake
 def move():
     """Move snake forward one segment."""
-    head = snake[-1].copy()
-    head.move(aim)
+    head = snake[-1].copy() # SL : Copy the current head position
+    head.move(aim) # SL: move head in current direction
 
+    # SL : Check for game over conditions (hit wall or self)
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
         update()
