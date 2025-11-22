@@ -8,7 +8,6 @@ Modifications:
 1. Increasing snake speed over time
 2. Random obstacles on the game field
 3. Special fruits with positive/negative effects
-4. Start menu with color options and replay functionality
 
 Based on original code from freegames.io
 """
