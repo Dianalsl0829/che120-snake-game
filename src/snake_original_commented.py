@@ -84,4 +84,4 @@ onkey(lambda: change(0, -10), 'Down') # AL : Down arrow key
 
 # AL : Start the game loop
 move() # AL : Call move function to start the game
-done() # Al: keep the window open until closed by the user
+done() # AL: keep the window open until closed by the user
