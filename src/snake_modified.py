@@ -103,7 +103,7 @@ def try_spawn_special_food():
     # AL - Only spawn special food if none is currently active
     if not special_food_active:
         # AL - 20% chance to spawn special food (1 in 5)
-        if randrange(1, 6) == 1:
+        if randrange(1, 2) == 1:
             special_food_active = True
             special_food_type = choice(list(SPECIAL_FOOD_TYPES.keys()))
             
@@ -227,7 +227,8 @@ def move():
             
             # AL - Special food scoring: double points or bonus points
             if current_effect == 'double_points':
-                points_earned = points_earned * 2  # AL - Double points for double points effect
+                points_earned = 3 + score  # AL - Double points for double points effect
+
             else:
                 points_earned = 3  # AL - Bonus points for other special foods
         else:
