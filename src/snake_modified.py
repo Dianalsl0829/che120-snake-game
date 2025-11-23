@@ -23,7 +23,7 @@ food = vector(0, 0)  # SL - Food starts at coordinates (0, 0)
 snake = [vector(10, 0)]  # SL - Snake starts as a single segment at (10, 0)
 aim = vector(0, -10)  # SL - Initial movement direction is downward (0, -10)
 obstacles = []  # AL - List to hold obstacle positions
-speed = 100  # SL - Initial game speed
+speed = 300  # SL - Initial game speed
 score = 0  # SL - Player's score
 
 # Special food system variables
@@ -52,7 +52,7 @@ SPECIAL_FOOD_TYPES = {
         'duration': 5   
     },
     'double_points': {
-        'color': 'orange',
+        'color': 'pink',
         'effect': 'Double Points',
         'duration': 15  
     }
@@ -109,7 +109,7 @@ def try_spawn_special_food():
             special_food_type = choice(list(SPECIAL_FOOD_TYPES.keys()))
             
             # AL - Set timer for 20-30 seconds (200-300 game cycles)
-            special_food_timer = randrange(200, 301)
+            special_food_timer = randrange(50, 100)
             print(f"Special food: {SPECIAL_FOOD_TYPES[special_food_type]['effect']}")
 
 
@@ -144,9 +144,9 @@ def apply_special_effect(effect_type):
     
     # AL - Apply immediate effects based on food type
     if effect_type == 'speed_boost':
-        speed = max(30, speed - 40)  # AL - Increase speed significantly
+        speed = speed - 80  # AL - Increase speed significantly
     elif effect_type == 'slow_down':
-        speed = min(200, speed + 50)  # AL - Decrease speed significantly
+        speed = speed + 100  # AL - Decrease speed significantly
     elif effect_type == 'double_points':
         # AL - Double points effect handled during scoring
         pass
@@ -162,8 +162,10 @@ def update_special_effects():
         print(f"Effect ended: {SPECIAL_FOOD_TYPES[current_effect]['effect']}")
         
         # AL - Reset speed changes when speed effects expire
-        if current_effect == 'speed_boost' or current_effect == 'slow_down':
-            speed = 100  # AL - Return to default speed
+        if current_effect == 'speed_boost':
+            speed = speed + 80  # AL - Restore original speed
+        elif current_effect == 'slow_down':
+            speed = speed - 100  # AL - Restore original speed
         
         special_effect_active = False
         current_effect = None
@@ -226,7 +228,7 @@ def move():
             
             # AL - Special food scoring: double points or bonus points
             if current_effect == 'double_points':
-                points_earned = 2  # AL - Double points for double points effect
+                points_earned = points_earned * 2  # AL - Double points for double points effect
             else:
                 points_earned = 3  # AL - Bonus points for other special foods
         else:
@@ -246,7 +248,7 @@ def move():
 
         # SL - Speed increase logic: every 3 points increases speed
         if score % 3 == 0 and speed > 50:
-            speed -= 5
+            speed -= 20
             print(f'Speed increased! Current speed: {speed}')
 
     else:
