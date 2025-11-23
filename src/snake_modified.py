@@ -23,7 +23,7 @@ food = vector(0, 0)  # SL - Food starts at coordinates (0, 0)
 snake = [vector(10, 0)]  # SL - Snake starts as a single segment at (10, 0)
 aim = vector(0, -10)  # SL - Initial movement direction is downward (0, -10)
 obstacles = []  # AL - List to hold obstacle positions
-speed = 300  # SL - Initial game speed
+speed = 200  # SL - Initial game speed
 score = 0  # SL - Player's score
 
 # Special food system variables
