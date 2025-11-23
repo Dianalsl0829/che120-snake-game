@@ -103,7 +103,7 @@ def try_spawn_special_food():
     # AL - Only spawn special food if none is currently active
     if not special_food_active:
         # AL - 20% chance to spawn special food (1 in 5)
-        if randrange(1, 2) == 1:
+        if randrange(1, 6) == 1:
             special_food_active = True
             special_food_type = choice(list(SPECIAL_FOOD_TYPES.keys()))
             
