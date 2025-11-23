@@ -107,7 +107,7 @@ def try_spawn_special_food():
             special_food_active = True
             special_food_type = choice(list(SPECIAL_FOOD_TYPES.keys()))
             
-            # AL - Set timer for 20-30 seconds (200-300 game cycles)
+            # AL - Set timer for 5-10 seconds (50-100 game cycles)
             special_food_timer = randrange(50, 100)
             print(f"Special food: {SPECIAL_FOOD_TYPES[special_food_type]['effect']}")
 
